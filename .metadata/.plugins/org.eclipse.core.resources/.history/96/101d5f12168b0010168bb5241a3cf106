@@ -1,0 +1,18 @@
+package com.test.consumer;
+
+@Service
+public class SameTopicMultiConsumer {
+
+    @KafkaListener(topics = "user-events", groupId = "group-2",
+                   containerFactory = "kafkaListenerContainerFactory")
+    public void consumerOne(UserEvent user) {
+        System.out.println("👤 ConsumerOne processed: " + user);
+    }
+
+    @KafkaListener(topics = "user-events", groupId = "group-3",
+                   containerFactory = "kafkaListenerContainerFactory")
+    public void consumerTwo(UserEvent user) {
+        System.out.println("👤 ConsumerTwo processed: " + user);
+    }
+}
+

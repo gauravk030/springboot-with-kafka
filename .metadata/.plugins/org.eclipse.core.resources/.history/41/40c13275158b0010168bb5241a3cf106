@@ -1,0 +1,27 @@
+package com.test.sender;
+
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.stereotype.Service;
+
+import com.test.dto.OrderEvent;
+import com.test.dto.UserEvent;
+
+@Service
+public class MultiProducer {
+
+    private final KafkaTemplate<String, Object> kafkaTemplate;
+
+    public MultiProducer(KafkaTemplate<String, Object> kafkaTemplate) {
+        this.kafkaTemplate = kafkaTemplate;
+    }
+
+    public void sendUser(UserEvent user) {
+        kafkaTemplate.send("user-events", user);
+        System.out.println("✅ Sent user: " + user);
+    }
+
+    public void sendOrder(OrderEvent order) {
+        kafkaTemplate.send("order-events", order);
+        System.out.println("✅ Sent order: " + order);
+    }
+}

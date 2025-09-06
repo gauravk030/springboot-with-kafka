@@ -1,0 +1,4 @@
+INDEX VERSION 1.4+D:\Gaurav\Study\Programs\Backend Programs\spring boot\spring boot kafka\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1982102497.index
+3123737129.index
+1561267410.index

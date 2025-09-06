@@ -1,0 +1,20 @@
+package com.test.sender;
+
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.stereotype.Service;
+import com.test.dto.UserEvent;
+
+@Service
+public class MessageProducer {
+
+    private final KafkaTemplate<String, UserEvent> kafkaTemplate;
+
+    public MessageProducer(KafkaTemplate<String, UserEvent> kafkaTemplate) {
+        this.kafkaTemplate = kafkaTemplate;
+    }
+
+    public void sendUser(UserEvent user) {
+        kafkaTemplate.send("user-events", user);
+        System.out.println("✅ App A sent: " + user);
+    }
+}

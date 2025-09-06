@@ -1,0 +1,5 @@
+INDEX VERSION 1.134
+D:\Gaurav\Study\Programs\Backend Programs\spring boot\spring boot kafka\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4048274527.index
+\springboot-with-kafka_app2\src\main\java
+D:\Gaurav\Study\Programs\Backend Programs\spring boot\spring boot kafka\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\10386235.index
+\springboot-with-kafka_app1\src\main\java

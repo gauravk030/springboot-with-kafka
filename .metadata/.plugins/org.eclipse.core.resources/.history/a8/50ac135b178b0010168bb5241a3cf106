@@ -1,0 +1,29 @@
+package com.test.service;
+
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.stereotype.Service;
+
+import com.test.dto.OrderEvent;
+import com.test.dto.UserEvent;
+
+@Service
+public class TypedProducer {
+
+    private final KafkaTemplate<String, UserEvent> userKafkaTemplate;
+    private final KafkaTemplate<String, OrderEvent> orderKafkaTemplate;
+
+    public TypedProducer(KafkaTemplate<String, UserEvent> userKafkaTemplate,
+                         KafkaTemplate<String, OrderEvent> orderKafkaTemplate) {
+        this.userKafkaTemplate = userKafkaTemplate;
+        this.orderKafkaTemplate = orderKafkaTemplate;
+    }
+
+    public void sendUser(UserEvent user) {
+        userKafkaTemplate.send("user-events", user);
+    }
+
+    public void sendOrder(OrderEvent order) {
+        orderKafkaTemplate.send("order-events", order);
+    }
+}
+

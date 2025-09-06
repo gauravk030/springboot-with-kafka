@@ -1,0 +1,23 @@
+package com.test.sender;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.stereotype.Component;
+
+@Service
+public class MessageProducer {
+
+    private final KafkaTemplate<String, UserEvent> kafkaTemplate;
+
+    public MessageProducer(KafkaTemplate<String, UserEvent> kafkaTemplate) {
+        this.kafkaTemplate = kafkaTemplate;
+    }
+
+    public void sendUser(UserEvent user) {
+        kafkaTemplate.send("user-events", user);
+        System.out.println("✅ App A sent: " + user);
+    }
+}

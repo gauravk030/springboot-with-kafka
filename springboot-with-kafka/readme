@@ -1,0 +1,8 @@
+## 1. Start Kafka:
+docker-compose up -d
+
+## 2. Start your Spring Boot app:
+mvn spring-boot:run
+
+## 3. Goto postman and run below url
+http://localhost:8080/send?msg=HelloKafka

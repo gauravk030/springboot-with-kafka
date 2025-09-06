@@ -1,0 +1,27 @@
+package com.test.consumer;
+
+import java.util.ArrayList;
+import java.util.List;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Service;
+import com.test.dto.UserEvent;
+
+@Service
+public class MessageConsumer {
+
+    private final List<UserEvent> receivedUsers = new ArrayList<>();
+
+    @KafkaListener(
+        topics = "${myapp.kafka.topic}",
+        groupId = "appB-group",
+        containerFactory = "kafkaListenerContainerFactory"
+    )
+    public void consume(UserEvent user) {
+        System.out.println("📩 App B received: " + user);
+        receivedUsers.add(user);
+    }
+
+    public List<UserEvent> getReceivedUsers() {
+        return receivedUsers;
+    }
+}

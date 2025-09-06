@@ -1,0 +1,29 @@
+package com.test.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.test.repository.MessageRepository;
+import com.test.sender.MessageProducer;
+
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/consumed")
+public class MessageControllerB {
+
+    private final MessageConsumer consumer;
+
+    public MessageControllerB(MessageConsumer consumer) {
+        this.consumer = consumer;
+    }
+
+    @GetMapping
+    public List<UserEvent> getConsumedMessages() {
+        return consumer.getReceivedUsers();
+    }
+}

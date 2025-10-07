@@ -3,8 +3,8 @@
 	- JPA does not suppport reactive WebFlux
    
 #For clean and build the project - (if needed)
-mvn dependency:purge-local-repository
-mvn clean install
+	- mvn dependency:purge-local-repository
+	- mvn clean install
 
 # Create table
 
